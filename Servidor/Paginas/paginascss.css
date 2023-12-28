@@ -1,0 +1,215 @@
+#BarraMenu {
+    width: 100%;
+    margin-left: auto;
+    text-align: center;
+    margin-right: auto;
+    height: auto;
+    position: fixed;
+    font-size: 20px;   
+    z-index: 4;
+}
+.item {
+    text-align: left;
+    display: inline-block; /* Cambiado a inline-block para que funcione correctamente */
+    list-style: none;
+    position: relative; /* Agregado para asegurar que los Submenu estén posicionados correctamente */
+}
+.boton {
+    font: bold 12px/18px;
+    display: inline-block;
+    position: relative;
+    padding: 15px 60px;
+    background: #7b6331;
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow: black 10px 10px 10px 1px;
+    margin-right: -9px;
+}
+.boton:hover {
+    background: #ff7300;
+    color: #e1ff00;
+}
+.Submenu {
+    display: none;
+    position: absolute;
+    text-align: center;
+    width: 100%; /* Cambiado a 100% para que ocupe todo el ancho del contenedor padre */
+    top: 100%; /* Posiciona el Submenu debajo del elemento padre */
+    left: 0;
+    margin-left: 9px;
+    z-index: 4;
+}
+#SubNube,
+#SubHost,
+#SubHuri,
+#SubPerfil {
+    width: 100%;
+}
+.subboton {
+    text-align: center;
+    height: auto;
+    font: bold 12px/18px;
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    padding: 20px 30px;
+    background: #7b6331;
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow: black 10px 10px 10px 1px;
+    border-radius: 34px;
+}
+.subboton:hover {
+    background: #ff7300;
+    color: #e1ff00;
+}
+.item:hover .Submenu {
+    display: block;
+}
+body{
+    background-image: url(/Archivos/Imagenes/Huri.jpg);
+    height: 2000px;
+    background-size: 2500px 2100px;
+}
+@media screen and (max-width: 1250px) {
+    .FotoyNombre {
+        display: none;
+    }
+}
+#foto{
+    position: fixed;
+    left: 85%;
+    top: 7px;
+    cursor: pointer;
+    z-index: 4;
+}
+#NombreP{
+    color: #ffffff;
+    font-size: 25px;
+    position: fixed;
+    left: 88.5%;
+    top: -7px;
+    cursor: pointer;
+    z-index: 4;
+}
+#Nombre{
+    color: #fefefe;
+    margin-top: 80px;
+    text-align: center;
+    font-size: 50px;
+    z-index: 4;
+}
+.FotoyNombre:hover #NombreP{
+    color: aquamarine;
+}
+.FotoyNombre:hover #foto{
+    background: aquamarine;
+}
+#Perfil{
+    border-top-right-radius: 34px;
+    border-bottom-right-radius: 12px;
+}
+#Inicio{
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 34px;
+}
+
+
+
+#Encabezado{
+    color: #ffffff;
+    font-size: 75px;
+    text-align: center;
+}
+#EdicionPerfil{
+    text-align: center;
+    color: #ffffff;
+    height: 1550px;
+    width: 1150px;
+    background-color: wheat;
+    margin-left: 150px;
+    margin-top: -50px;
+    border-radius: 50px;
+    padding: auto;
+    border: 15px aquamarine groove;
+}
+#FotoEditar{
+    
+    border: 10px yellow ridge;
+    margin-top: 80px;
+    background-color: white;
+}
+#CambiarFoto{
+    display: none;
+}
+#NuevaFoto{
+    margin-top: 60px;
+    font-size: 30px;
+}
+#EdicionCuenta{
+    display: flex;
+    flex-direction: row;
+    margin-top: 60px;
+    align-items:baseline;
+    margin-left: 30px;
+}
+#ENombreLabel{
+    text-align: center;
+    font-size: 25px;
+    color: black;
+}
+#NombreEditar{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 25px;
+}
+.EdicionUsuarioClave{
+    margin-left: 20px
+}
+#EUsuarioLabel{
+    text-align: center;
+    font-size: 25px;
+    color: black;
+}
+#UsuarioEditar{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 25px;
+}
+.EClaveLabel{
+    color: black;
+    font-size: 25px;
+}
+.NuevaClave{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 300px;
+    height: 30px;
+    text-align: center;
+}
+.MostrarClave{
+    width: 20px;
+    height: 20px;
+    color: black;
+    flex-direction: row;
+}
+#ActualizarPerfil{
+    margin-top: 150px;
+    color: black;
+    font-size: 30px;
+}
+#BotonActualizar{
+    margin-top: 80px;
+    width: 500px;
+    height: 100px;
+    color: #ffffff;
+    font-size: 30px;
+    background-color: rebeccapurple;
+    margin-bottom: 100px;
+}
+#CambioRealizado{
+    font-size: 40px;
+    color: black;
+    display: none;
+}
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/SubPaginas/Directorio/directoriocss.css">
+        <title>Server</title>
+        <script src="/Paginas/Catalogos.js"></script>
+    </head>
+    <body>
+        
+        <div id="BarraMenu">
+            <div class="item">
+                <button class="boton" id="Inicio" onclick=IrInicio()>Inicio</button>
+            </div>
+            <div class="item">
+                <button class="boton" id="Peliculas" onclick=VerPeliculas()>Peliculas</button>
+                <div class="Submenu" id="SubPelicula">
+                    <button class="subboton"  id="Directorio" onclick=VerDirectorio()>Directorio</button>
+                    <button class="subboton"  id="Categorias" onclick=VerCategorias()>Categorias</button>
+                    <button class="subboton"  id="Reseñas" onclick=VerReseñas()>Reseñas Usuarios</button>
+                    <button class="subboton"  id="Buscador" onclick=IrBuscador()>Buscador</button>
+                </div>
+            </div>
+            <div class="item">
+                <button class="boton" id="Nube" onclick=VerNube()>Nube</button>
+                <div class="Submenu" id="SubNube">
+                    <button class="subboton"  id="SubirArchivo" onclick=IrSubirArchivo()>Subir Archivo</button>
+                    <button class="subboton"  id="VerCarpeta" onclick=IrVerCarpeta()>Ver Carpeta</button>
+                    <button class="subboton"  id="Explorar" onclick=ExplorarArchivos()>Explorar Archivos</button>
+                </div>
+            </div>
+            <div class="item">
+                <button class="boton" id="Hosteo" onclick=Hostear()>Hosteo</button>
+                <div class="Submenu" id="SubHost">
+                    <button class="subboton" id="VerServidores" onclick=IrServidores()>Ver Servidores</button>
+                    <button class="subboton"  id="InicarMinecraft" onclick=IrMinecraft()>Iniciar Servidor Minecraft</button>
+                    <button class="subboton"  id="IniciarHambre" onclick=IrDontStarve()>Iniciar Servidor Don´t starve</button>                </div>
+            </div>
+            <div class="item">
+                <button class="boton" id="Huri" onclick=VerHuri()>Huri</button>
+                <div class="Submenu" id="SubHuri">
+                    <button class="subboton"  id="Galeria" onclick=VerGaleria()>Galeria</button>
+                </div>
+            </div>
+            <div class="item">
+                <button class="boton" id="Perfil" onclick=VerPerfil()>Perfil</BUtton>
+                <div class="Submenu" id="SubPerfil">
+                    <button class="subboton"  id="VerCuenta" onclick=EditarPerfil()>Ver Cuenta</button>
+                    <button class="subboton"  id="CerrarSesion" onclick=CerrarCuenta()>Cerrar Sesion</button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <class class="FotoyNombre">
+            <img id="foto" onclick=VerPerfil() width="50">
+            <p id="NombreP" onclick=VerPerfil()></p>
+        </class>
+        <div id="Catalogo">
+            <p id="Encabezado">Categorías:</p>
+            <section>
+                <div id="contenedor-categorias">
+                    <script>
+                        var div = document.getElementById('contenedor-categorias');        
+                        div.onload = CargarGenerosDesdeBD();
+                    </script>                 
+                </div>
+            </section>
+        </div>
+        <script src="/Paginas/Redirecciones.js"></script>
+</html>

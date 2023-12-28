@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/Paginas/paginascss.css">
+        <title>Server</title>
+    </head>
+    <body>
+        <div id="BarraMenu">
+            <div class="item">
+                <button class="boton" id="Inicio" onclick=IrInicio()>Inicio</button>
+            </div>
+            <div class="item">
+                <button class="boton" id="Peliculas" onclick=VerPeliculas()>Peliculas</button>
+                <div class="Submenu" id="SubPelicula">
+                    <button class="subboton"  id="Directorio" onclick=VerDirectorio()>Directorio</button>
+                    <button class="subboton"  id="Categorias" onclick=VerCategorias()>Categorias</button>
+                    <button class="subboton"  id="Reseñas" onclick=VerReseñas()>Reseñas Usuarios</button>
+                    <button class="subboton"  id="Buscador" onclick=IrBuscador()>Buscador</button>
+                </div>
+            </div>
+            <div class="item">
+                <button class="boton" id="Nube" onclick=VerNube()>Nube</button>
+                <div class="Submenu" id="SubNube">
+                    <button class="subboton"  id="SubirArchivo" onclick=IrSubirArchivo()>Subir Archivo</button>
+                    <button class="subboton"  id="VerCarpeta" onclick=IrVerCarpeta()>Ver Carpeta</button>
+                    <button class="subboton"  id="Explorar" onclick=ExplorarArchivos()>Explorar Archivos</button>
+                </div>
+            </div>
+            <div class="item">
+                <button class="boton" id="Hosteo" onclick=Hostear()>Hosteo</button>
+                <div class="Submenu" id="SubHost">
+                    <button class="subboton" id="VerServidores" onclick=IrServidores()>Ver Servidores</button>
+                    <button class="subboton"  id="InicarMinecraft" onclick=IrMinecraft()>Iniciar Servidor Minecraft</button>
+                    <button class="subboton"  id="IniciarHambre" onclick=IrDontStarve()>Iniciar Servidor Don´t starve</button>                </div>
+            </div>
+            <div class="item">
+                <button class="boton" id="Huri" onclick=VerHuri()>Huri</button>
+                <div class="Submenu" id="SubHuri">
+                    <button class="subboton"  id="Galeria" onclick=VerGaleria()>Galeria</button>
+                </div>
+            </div>
+            <div class="item">
+                <button class="boton" id="Perfil" onclick=VerPerfil()>Perfil</BUtton>
+                <div class="Submenu" id="SubPerfil">
+                    <button class="subboton"  id="VerCuenta" onclick=EditarPerfil()>Ver Cuenta</button>
+                    <button class="subboton"  id="CerrarSesion" onclick=CerrarCuenta()>Cerrar Sesion</button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <class class="FotoyNombre">
+            <img id="foto" onclick=VerPerfil() width="50">
+            <p id="NombreP" onclick=VerPerfil()></p>
+        </class>
+
+
+
+
+        <p id="Encabezado">Editar Perfil</p>
+        <div id="EdicionPerfil">
+            <section>
+                <div  id="EdicionCuenta">
+                    <div>
+                        <label id="ENombreLabel">Ingresar Nuevo Nombre:</label>
+                        <br>
+                        <input id="NombreEditar" type="text" >
+                    </div>
+                    <div class="EdicionUsuarioClave">
+                        <label id="EUsuarioLabel">Ingresar Nuevo Usuario:</label>
+                        <br>
+                        <input id="UsuarioEditar" type="text" >
+                    </div>
+                    <div class="EdicionUsuarioClave">
+                        <label class="EClaveLabel">Ingresar Nueva Contraseña:</label>
+                        <br>
+                        <input class="NuevaClave" id="EditarClave1" type="password">
+                        <br>
+                        <label class="EClaveLabel">Reingrese la Contraseña:</label>
+                        <br>
+                        <input class="NuevaClave" id="EditarClave2" type="password">
+                        <br>
+                        <input type="checkbox" id="MostrarContraseña" class="MostrarClave" onclick="MostrarContraseña()"><label class="MostrarClave">Mostrar Contraseña</label>                        
+                    </div>
+                </div>
+            </section>
+            <div id="ActualizarPerfil">
+                <p>Edite únicamente los parámetros que desea actualizar.</p>
+                <button id="BotonActualizar" onclick=ActualizarPerfil() >Actualizar Perfil</button>
+            </div>
+            <p id="CambioRealizado">¡Perfil Actualizado Correctamente! <br> Cierre y vuelva a iniciar sesión para ver los cambios.</p>
+        </div>
+        <script src="/Paginas/Redirecciones.js"></script>
+        <script src="/SubPaginas/EditarPerfil.js"></script>
+    </body>
+</html>

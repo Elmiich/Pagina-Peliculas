@@ -1,0 +1,233 @@
+#BarraMenu {
+    width: 100%;
+    margin-left: auto;
+    text-align: center;
+    margin-right: auto;
+    height: auto;
+    position: fixed;
+    font-size: 20px;   
+    z-index: 4;
+}
+.item {
+    text-align: left;
+    display: inline-block; /* Cambiado a inline-block para que funcione correctamente */
+    list-style: none;
+    position: relative; /* Agregado para asegurar que los Submenu estén posicionados correctamente */
+}
+.boton {
+    font: bold 12px/18px;
+    display: inline-block;
+    position: relative;
+    padding: 15px 60px;
+    background: #7b6331;
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow: black 10px 10px 10px 1px;
+    margin-right: -9px;
+}
+.boton:hover {
+    background: #ff7300;
+    color: #e1ff00;
+}
+.Submenu {
+    display: none;
+    position: absolute;
+    text-align: center;
+    width: 100%; /* Cambiado a 100% para que ocupe todo el ancho del contenedor padre */
+    top: 100%; /* Posiciona el Submenu debajo del elemento padre */
+    left: 0;
+    margin-left: 9px;
+    z-index: 4;
+}
+#SubNube,
+#SubHost,
+#SubHuri,
+#SubPerfil {
+    width: 100%;
+}
+.subboton {
+    text-align: center;
+    height: auto;
+    font: bold 12px/18px;
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    padding: 20px 30px;
+    background: #7b6331;
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow: black 10px 10px 10px 1px;
+    border-radius: 34px;
+}
+.subboton:hover {
+    background: #ff7300;
+    color: #e1ff00;
+}
+.item:hover .Submenu {
+    display: block;
+}
+body{
+    background-image: url(/Archivos/Imagenes/Huri.jpg);
+    height: 2000px;
+    background-size: 2500px 2100px;
+}
+@media screen and (max-width: 1250px) {
+    .FotoyNombre {
+        display: none;
+    }
+}
+#foto{
+    position: fixed;
+    left: 85%;
+    top: 7px;
+    cursor: pointer;
+    z-index: 4;
+}
+#NombreP{
+    color: #ffffff;
+    font-size: 25px;
+    position: fixed;
+    left: 88.5%;
+    top: -7px;
+    cursor: pointer;
+    z-index: 4;
+}
+#Nombre{
+    color: #fefefe;
+    margin-top: 80px;
+    text-align: center;
+    font-size: 50px;
+    z-index: 4;
+}
+.FotoyNombre:hover #NombreP{
+    color: aquamarine;
+}
+.FotoyNombre:hover #foto{
+    background: aquamarine;
+}
+#Perfil{
+    border-top-right-radius: 34px;
+    border-bottom-right-radius: 12px;
+}
+#Inicio{
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 34px;
+}
+
+
+
+
+
+#CatalogoPeliculas{
+    text-align: center;
+    color: #ffffff;
+    height: 1550px;
+    width: 1150px;
+    background-color: #dedede;
+    opacity: 0.8;
+    margin-left: 150px;
+    margin-top: 200px;
+    border-radius: 50px;
+    padding: auto;
+    border: 5px rgb(222, 64, 64) dashed;
+    z-index: 1; /* Puedes ajustar este valor según sea necesario */
+}
+#Encabezado{
+    margin-top: -95px;
+    color: #ffffff;
+    font-size: 60px;
+}
+.Titulos{
+    margin-top: 5px;
+    color: black;
+}
+.Peliculas{
+    margin-top: auto;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 6%;
+    width: 120px;
+    height: 200px;
+    border: 5px orange ridge;
+    cursor: pointer;
+}
+@media screen and (max-width: 1250px) {
+    .Peliculas{
+        margin-bottom: 10%;
+    }
+}
+#NumeroPagina{
+    font-size: 26px;
+    margin-top: 50px;
+    
+}
+.Pagina{
+    margin-right: 25px;
+    color: black;
+    text-decoration: underline;
+    display:inline;
+    cursor: pointer;
+}
+#contenedor-categorias {
+    display: flex; 
+    flex-wrap: wrap; 
+}
+#contenedor-peliculas {
+    display: flex; 
+    flex-wrap: wrap;    
+}
+#contenedor-generos{
+    display: flex; 
+    flex-wrap: wrap;    
+}
+#contenedor-busqueda{
+    display: flex; 
+    flex-wrap: wrap;    
+}
+#todas-las-reseñas{
+    display: flex; 
+    flex-wrap: wrap;
+    font: black;
+    color: black;
+}
+#Catalogo {
+    text-align: center;
+    color: #ffffff;
+    height: auto;
+    width: 90%; /* Cambiado a porcentaje para hacerlo más responsivo */
+    max-width: 1150px; /* Limita el ancho máximo */
+    background-color: #dedede;
+    opacity: 0.8;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 170px; /* Ajustado para mayor separación en la parte superior */
+    border-radius: 50px;
+    padding: 20px; /* Añadido relleno para mejor apariencia en pantallas pequeñas */
+    border: 5px rgb(222, 64, 64) dashed;
+}
+#todas-las-reseñas{
+    display: flex; 
+    flex-wrap: wrap;
+    font: black;
+    color: black;
+}
+.categoria{
+    margin-left: 20px;
+    margin-right: 70px;
+    margin-bottom: 60px;
+    width: 180px;
+    height: 300px;
+    border: 5px gold outset;
+    cursor: pointer;
+}
+#catalogoreseñas{
+    color: black;
+
+}
+#Buscar{
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+#noE{
+    color: black;
+}
