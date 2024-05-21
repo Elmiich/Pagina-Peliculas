@@ -3,6 +3,15 @@
 <head>
   <title>Servidor: Iniciar Sesion</title>
   <link rel="stylesheet" type="text/css" href="/LogIn/logincss.css">
+  <style>
+    #qr-code-container {
+        text-align: center;
+    }
+    #qr-code {
+        max-width: 300px;
+        height: auto;
+    }
+  </style>
 </head>
 <body>
   <div class="login-root">
@@ -10,8 +19,7 @@
       <div class="loginbackground box-background--white padding-top--64">
         <div class="loginbackground-gridContainer">
           <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
-            <div class="box-root" style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;">
-            </div>
+            <div class="box-root" style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;"></div>
           </div>
           <div class="box-root flex-flex" style="grid-area: 4 / 2 / auto / 5;">
             <div class="box-root box-divider--light-all-2 animationLeftRight tans3s" style="flex-grow: 1;"></div>
@@ -48,15 +56,67 @@
             <div class="formbg-inner padding-horizontal--48">
               <span class="padding-bottom--15">Inicia Sesion con tu cuenta</span>
                 <div class="field padding-bottom--24">
-                  <label for="email">Usuario</label>
+                  <label for="Usuario">Usuario:</label>
                   <input type="text" id="Usuario" placeholder="Usuario"/>
                 </div>
                 <div class="field padding-bottom--24">
-                    <label for="password">Contraseña</label>
+                    <label for="Contraseña">Contraseña:</label>
                     <input type="password" id="Contraseña" placeholder="Contraseña"/>
                 </div>
+                <div id="qr-code-container">
+                  <img id="qr-code" src="" alt="QR Code">
+                </div>
+
+
+                <script>
+                  async function fetchQRCode() {
+                    try {
+                      const response = await fetch('http://caduto.online:4018/login');
+                      const data = await response.json();
+                      document.getElementById('qr-code').src = data.qrCodeData;
+                      sessionStorage.setItem('qrToken', data.token);
+                    } catch (error) {
+                      console.error('Error al obtener el código QR:', error);
+                    }
+                  }
+  
+                  fetchQRCode();
+  
+                  function checkTokenStatus() {
+                    const token = sessionStorage.getItem('qrToken');
+                    if (!token) return;
+                    fetch(`http://caduto.online:4018/login/validateToken?token=${token}`)
+                      .then(response => response.json())
+                      .then(data => {
+                        if (data.success) {
+                          console.log('Inicio de sesión exitoso:', data);
+                          const cuenta = {
+                            Usuario: data.Usuario,
+                            Nombre: data.Nombre,
+                            Foto: data.Foto
+                          };
+
+                          sessionStorage.setItem("Usuario", cuenta.Usuario);
+                          sessionStorage.setItem("nombrevar", cuenta.Nombre);
+                          sessionStorage.setItem("FotoPerfil", cuenta.Foto);
+
+                          window.location.href = '../Main/Index.html'; 
+                        } else {
+                          console.log('Token no válido aún');
+                        }
+                      })
+                      .catch(error => console.error('Error al validar el token:', error));
+                  }
+  
+                  setInterval(checkTokenStatus, 5000); 
+                </script>
+
+              
+                <div style="text-align: center;">
+                  <input type="checkbox" id="MantenerSesion">Mantener sesión iniciada</input>
+                </div>
                 <div class="field padding-bottom--24">
-                    <button id="IniciarSesionBoton" type="button" onclick=IniciarSesion()>Iniciar Sesion</button>
+                    <button id="IniciarSesionBoton" type="button" onclick="IniciarSesion()">Iniciar Sesion</button>
                 </div>
             </div>
           </div>
@@ -69,6 +129,40 @@
       </div>
     </div>
   </div>
+   <!-- <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const tokenFromURL = urlParams.get('token'); // Extraer el token de la URL
+    
+    // Verificar si hay un token en la URL
+    if (tokenFromURL) {
+      // Hacer una solicitud al backend para validar el token
+      fetch(`/validateToken?token=${tokenFromURL}`)
+        .then(response => {
+          if (response.ok) {
+            // El token es válido, continuar con el proceso de inicio de sesión
+            return response.json();
+          } else {
+            throw new Error('Token inválido');
+          }
+        })
+        .then(data => {
+          // Procesar la respuesta del backend
+          // Por ejemplo, mostrar un mensaje de inicio de sesión exitoso
+          console.log('Inicio de sesión exitoso:', data);
+        })
+        .catch(error => {
+          // Manejar errores de validación de token
+          console.error('Error al validar el token:', error);
+          // Por ejemplo, mostrar un mensaje de error al usuario
+          alert('Error al validar el token. Por favor, inicie sesión nuevamente.');
+          // Redirigir al usuario de nuevo a la página de inicio de sesión sin el token en la URL
+          window.location.href = 'caduto.online/LogIn/Login.html';
+        });
+    } else {
+      // No hay token en la URL, no es necesario validar
+      console.log('No se encontró ningún token en la URL.');
+    }
+    </script> -->
   <script src="/LogIn/Loginjs.js"></script>
 </body>
 </html>

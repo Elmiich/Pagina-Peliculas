@@ -18,13 +18,33 @@ var Perfil=document.getElementById("Perfil") //Listo
 var VerCuenta=document.getElementById("VerCuenta") //Listo
 var CerrarSesion=document.getElementById("CerrarSesion") //Listo
 
-var Nombre=sessionStorage.getItem("nombrevar")
-document.getElementById("foto").setAttribute("src",sessionStorage.getItem("FotoPerfil"))
-document.getElementById("NombreP").innerHTML=sessionStorage.getItem("nombrevar");
-
-if(Nombre==null){
-    window.location="/LogIn/Login.html"
+if (!localStorage.getItem("nombrevar") && !sessionStorage.getItem("nombrevar")) {
+    window.location = "/LogIn/Login.html";
+} else {
+    if (!localStorage.getItem("nombrevar")){
+        const nombrevar = sessionStorage.getItem("nombrevar");
+        const fotoPerfil = sessionStorage.getItem("FotoPerfil");
+        document.getElementById("foto").setAttribute("src", fotoPerfil);
+        document.getElementById("NombreP").innerHTML = nombrevar;
+    }
+    else {
+        const nombrevar = localStorage.getItem("nombrevar");
+        const fotoPerfil = localStorage.getItem("FotoPerfil");
+        sessionStorage.setItem("Usuario", localStorage.getItem("Usuario"));
+        sessionStorage.setItem("nombrevar", nombrevar);
+        sessionStorage.setItem("FotoPerfil", fotoPerfil);
+        document.getElementById("foto").setAttribute("src", fotoPerfil);
+        document.getElementById("NombreP").innerHTML = nombrevar;
+    }
 }
+const Nombre = sessionStorage.getItem("nombrevar")
+
+var currentUser = sessionStorage.getItem("Usuario");
+ var allowedUser = "Admin";
+if (currentUser !== allowedUser) {
+        document.getElementById("Administrar").style.display = "none";
+}
+
 
 function IrInicio(){
 window.location="/Main/Index.html"
@@ -86,6 +106,10 @@ function IrBuscador(){
     window.location="/SubPaginas/Buscador.html"
 }
 
+function AdministrarPeliculas(){
+    window.location="/SubPaginas/AdministrarPeliculas.html"
+}
+
 function VerNube(){
     window.location="/Paginas/Nube.html"
 }
@@ -135,8 +159,9 @@ function EditarPerfil(){
 }
 
 function CerrarCuenta(){ 
-    alert("Se cerro la sesion, hasta luego "+Nombre) 
+    alert("Se cerro la sesion, hasta luego " + Nombre) 
     sessionStorage.clear()  
+    localStorage.clear()
     window.location="/LogIn/Login.html"
 }
 

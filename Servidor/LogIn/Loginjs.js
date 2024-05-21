@@ -1,5 +1,5 @@
 
-var tipologin=2          
+//var tipologin=2          
 /*async function IniciarSesion(){
     const response = await fetch("../LogIn/Cuentas.json");
     const json = await response.json();
@@ -25,7 +25,8 @@ var tipologin=2
 async function IniciarSesion() {
     const UsuarioIngresado = document.getElementById('Usuario').value;
     const ClaveIngresado = document.getElementById('Contraseña').value;
-
+    const MantenerSesion = document.getElementById('MantenerSesion').checked
+    console.log(MantenerSesion)
     try {
         const response = await fetch('/users');
         if (!response.ok) {
@@ -39,12 +40,14 @@ async function IniciarSesion() {
         if (users && users.length > 0) {
             // Iterar sobre las cuentas y verificar las credenciales
             for (const cuenta of users) {
-                console.log('Usuario esperado:', UsuarioIngresado, 'Usuario en cuenta:', cuenta.Usuario);
-                console.log('Contraseña esperada:', ClaveIngresado, 'Contraseña en cuenta:', cuenta.Contraseña);
-
                 if (cuenta.Usuario === UsuarioIngresado && cuenta.Contraseña === ClaveIngresado) {
                     // Las credenciales coinciden
                     loginC = true;
+                    if (MantenerSesion === true){
+                        localStorage.setItem("Usuario", cuenta.Usuario)
+                        localStorage.setItem("nombrevar", cuenta.Nombre);
+                        localStorage.setItem("FotoPerfil", cuenta.Foto);
+                    }
                     sessionStorage.setItem("Usuario", cuenta.Usuario)
                     sessionStorage.setItem("nombrevar", cuenta.Nombre);
                     sessionStorage.setItem("FotoPerfil", cuenta.Foto);
@@ -57,7 +60,6 @@ async function IniciarSesion() {
             console.log('Inicio de sesión exitoso');
             window.location = "../Main/Index.html";
         } else {
-            console.log('Credenciales incorrectas');
             alert('Credenciales incorrectas');
         }
     } catch (error) {

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/Paginas/paginascss.css">
+        <link rel="stylesheet" href="/SubPaginas/Directorio/directoriocss.css">
+        <title>Server</title>
+    </head>
+    <body>
+        <div id="BarraMenu">
+            <div class="item">
+                <button class="boton" id="Inicio" onclick=IrInicio()>Inicio</button>
+            </div>
+            <div class="item">
+                <button class="boton" id="Peliculas" onclick=VerPeliculas()>Peliculas</button>
+                <div class="Submenu" id="SubPelicula">
+                    <button class="subboton"  id="Directorio" onclick=VerDirectorio()>Directorio</button>
+                    <button class="subboton"  id="Categorias" onclick=VerCategorias()>Categorias</button>
+                    <button class="subboton"  id="Reseñas" onclick=VerReseñas()>Reseñas Usuarios</button>
+                    <button class="subboton"  id="Buscador" onclick=IrBuscador()>Buscador</button>
+                    <button class="subboton"  id="Administrar" onclick=AdministrarPeliculas()>Administrar Peliculas</button>
+                </div>
+            </div>
+            <div class="item">
+                <button class="boton" id="Nube" onclick=VerNube()>Nube</button>
+                <div class="Submenu" id="SubNube">
+                    <button class="subboton"  id="SubirArchivo" onclick=IrSubirArchivo()>Subir Archivo</button>
+                    <button class="subboton"  id="VerCarpeta" onclick=IrVerCarpeta()>Ver Carpeta</button>
+                    <button class="subboton"  id="Explorar" onclick=ExplorarArchivos()>Explorar Archivos</button>
+                </div>
+            </div>
+            <div class="item">
+                <button class="boton" id="Hosteo" onclick=Hostear()>Hosteo</button>
+                <div class="Submenu" id="SubHost">
+                    <button class="subboton" id="VerServidores" onclick=IrServidores()>Ver Servidores</button>
+                    <button class="subboton"  id="InicarMinecraft" onclick=IrMinecraft()>Iniciar Servidor Minecraft</button>
+                    <button class="subboton"  id="IniciarHambre" onclick=IrDontStarve()>Iniciar Servidor Don´t starve</button>                </div>
+            </div>
+            <div class="item">
+                <button class="boton" id="Huri" onclick=VerHuri()>Huri</button>
+                <div class="Submenu" id="SubHuri">
+                    <button class="subboton"  id="Galeria" onclick=VerGaleria()>Galeria</button>
+                </div>
+            </div>
+            <div class="item">
+                <button class="boton" id="Perfil" onclick=VerPerfil()>Perfil</BUtton>
+                <div class="Submenu" id="SubPerfil">
+                    <button class="subboton"  id="VerCuenta" onclick=EditarPerfil()>Ver Cuenta</button>
+                    <button class="subboton"  id="CerrarSesion" onclick=CerrarCuenta()>Cerrar Sesion</button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <class class="FotoyNombre">
+            <img id="foto" onclick=VerPerfil() width="50">
+            <p id="NombreP" onclick=VerPerfil()></p>
+        </class>
+        <br>
+
+
+        <div id="Catalogo">
+            <p id="Encabezado">Gestionar Películas</p>
+            <div id="SeleccionarOpcion">               
+                <label for="actionSelect">Seleccionar Acción:</label>
+                <select id="actionSelect" name="actionSelect" placeholder="">
+                    <option value="">Seleccione una opción</option>
+                    <option value="upload">Subir Película</option>
+                    <option value="edit">Editar Película</option>
+                </select>
+            </div>
+            <div id="uploadFormContainer" style="display: none;">
+                <h2>Subir Película</h2>
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <label for="uploadTitle">Título:</label>
+                    <input type="text" id="uploadTitle" name="title" required><br><br>
+        
+                    <label for="uploadYear">Año de Estreno:</label>
+                    <input type="number" id="uploadYear" name="year" required><br><br>
+        
+                    <label for="uploadDescription">Descripción:</label>
+                    <textarea id="uploadDescription" name="description" required></textarea><br><br>
+        
+                    <label for="uploadGenre">Género:</label>
+                    <input type="text" id="uploadGenre" name="genre" required><br><br>
+        
+                    <label for="uploadImageFile">Archivo de Imagen:</label>
+                    <input type="file" id="uploadImageFile" name="imageFile" accept="image/*" required><br><br>
+        
+                    <label for="uploadSubtitleFile">Archivo de Subtítulo:</label>
+                    <input type="file" id="uploadSubtitleFile" name="subtitleFile" accept=".srt,.vtt" required><br><br>
+        
+                    <label for="uploadMovieFile">Archivo de Película:</label>
+                    <input type="file" id="uploadMovieFile" name="movieFile" accept="video/*" required><br><br>
+        
+                    <button type="submit">Subir Película</button>
+                </form>
+            </div>
+        
+            <div id="editFormContainer" style="display: none;">
+                <h2>Editar Película</h2>
+                <form id="editForm" enctype="multipart/form-data">
+                    <label for="movieSelect">Seleccionar Película:</label>
+                    <select id="movieSelect" name="movieSelect" required>
+                    </select><br><br>
+        
+                    <label for="editTitle">Título:</label>
+                    <input type="text" id="editTitle" name="title"><br><br>
+        
+                    <label for="editYear">Año de Estreno:</label>
+                    <input type="number" id="editYear" name="year"><br><br>
+        
+                    <label for="editDescription">Descripción:</label>
+                    <textarea id="editDescription" name="description"></textarea><br><br>
+        
+                    <label for="editGenre">Género:</label>
+                    <input type="text" id="editGenre" name="genre"><br><br>
+        
+                    <label for="editImageFile">Archivo de Imagen:</label>
+                    <input type="file" id="editImageFile" name="imageFile" accept="image/*"><br><br>
+        
+                    <label for="editSubtitleFile">Archivo de Subtítulo:</label>
+                    <input type="file" id="editSubtitleFile" name="subtitleFile" accept=".srt,.vtt"><br><br>
+        
+                    <label for="editMovieFile">Archivo de Película:</label>
+                    <input type="file" id="editMovieFile" name="movieFile" accept="video/*"><br><br>
+        
+                    <button type="submit">Guardar Cambios</button>
+                </form>
+            </div>
+        </div>
+        
+
+
+
+        <script>
+
+
+        </script>
+
+
+
+        <script src="/Paginas/Redirecciones.js"></script>
+        <script src="/SubPaginas/Administrar.js"></script>
+    </body>
+</html>
